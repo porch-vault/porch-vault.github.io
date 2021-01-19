@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Porch Vault</title>
+    <link>https://colorlessean.github.io/</link>
+    <description>Recent content on Porch Vault</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© PorchVault 2021</copyright>
+    <lastBuildDate>Mon, 11 Jan 2021 20:23:37 -0600</lastBuildDate>
+    
+	<atom:link href="https://colorlessean.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About Us: Porch Vault Team</title>
+      <link>https://colorlessean.github.io/about/</link>
+      <pubDate>Mon, 11 Jan 2021 20:23:37 -0600</pubDate>
+      
+      <guid>https://colorlessean.github.io/about/</guid>
+      <description>The Team The team consists of members: Bennett Fleming, Justin Borromeo, Matthew Romlewski, and Sean O&amp;rsquo;Sullivan.
+Mission Over the past decade, the popularity of e-commerce has exploded with consumers attracted to the convenience of ordering via the Internet and having goods delivered in less than a week. With most of these packages being delivered to residences, porch piracy has become an increasingly prevalent problem. Every day in the US, ~$25M of delivered goods are reported as stolen.</description>
+    </item>
+    
+    <item>
+      <title>First Post</title>
+      <link>https://colorlessean.github.io/post/firstpost/</link>
+      <pubDate>Mon, 11 Jan 2021 20:23:37 -0600</pubDate>
+      
+      <guid>https://colorlessean.github.io/post/firstpost/</guid>
+      <description>This is the first post in the blog website&amp;hellip;
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Porch Vault Product</title>
+      <link>https://colorlessean.github.io/product/</link>
+      <pubDate>Mon, 11 Jan 2021 20:23:37 -0600</pubDate>
+      
+      <guid>https://colorlessean.github.io/product/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Progress</title>
+      <link>https://colorlessean.github.io/post/progress/</link>
+      <pubDate>Mon, 11 Jan 2021 20:23:37 -0600</pubDate>
+      
+      <guid>https://colorlessean.github.io/post/progress/</guid>
+      <description>This is a bogus blog post to have as filler for page testing.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+  </channel>
+</rss>
