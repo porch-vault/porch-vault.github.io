@@ -3,6 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://colorlessean.github.io/post/mechfab/</loc>
+    <lastmod>2021-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/</loc>
+    <lastmod>2021-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/databaseschema/</loc>
+    <lastmod>2021-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/apiadjustments/</loc>
+    <lastmod>2021-03-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/productapi/</loc>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/converting_react_to_chrome_ext/converting_react_to_chrome_ext/</loc>
+    <lastmod>2021-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/emailnotifications/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/mechredesign/</loc>
+    <lastmod>2021-02-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://colorlessean.github.io/post/authapi/</loc>
+    <lastmod>2021-01-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://colorlessean.github.io/about/</loc>
     <lastmod>2021-01-11T20:23:37-06:00</lastmod>
   </url>
@@ -19,11 +64,6 @@
   
   <url>
     <loc>https://colorlessean.github.io/</loc>
-    <lastmod>2021-01-11T20:23:37-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://colorlessean.github.io/post/</loc>
     <lastmod>2021-01-11T20:23:37-06:00</lastmod>
   </url>
   

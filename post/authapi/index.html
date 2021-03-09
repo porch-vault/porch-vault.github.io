@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="First Post"/>
+<meta name="twitter:title" content="Authorization API"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="First Post &middot; Porch Vault" />
+  	<meta property="og:title" content="Authorization API &middot; Porch Vault" />
   	<meta property="og:site_name" content="Porch Vault" />
-  	<meta property="og:url" content="https://colorlessean.github.io/post/firstpost/" />
+  	<meta property="og:url" content="https://colorlessean.github.io/post/authapi/" />
 
     
         
@@ -31,16 +31,16 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2021-01-11T20:23:37-06:00" />
+    <meta property="article:published_time" content="2021-01-22T00:00:00Z" />
 
     
     
 
-    <title>First Post &middot; Porch Vault</title>
+    <title>Authorization API &middot; Porch Vault</title>
 
     
-    <meta name="description" content="This is the first post in the blog website&amp;hellip;
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore" />
+    <meta name="description" content="The first and arguably most important part of the Back-End service is the authorization API.
+Purpose The authorization API is built to handle authorizing client" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -64,7 +64,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
     <meta name="generator" content="Hugo 0.68.3" />
 
-    <link rel="canonical" href="https://colorlessean.github.io/post/firstpost/" />
+    <link rel="canonical" href="https://colorlessean.github.io/post/authapi/" />
 
     
       
@@ -101,23 +101,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             
         ]
     },
-    "headline": "First Post",
-    "name": "First Post",
-    "wordCount":  78 ,
-    "timeRequired": "PT1M",
+    "headline": "Authorization API",
+    "name": "Authorization API",
+    "wordCount":  633 ,
+    "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://colorlessean.github.io/post/firstpost/",
-    "datePublished": "2021-01-11T20:23Z",
-    "dateModified": "2021-01-11T20:23Z",
+    "url": "https://colorlessean.github.io/post/authapi/",
+    "datePublished": "2021-01-22T00:00Z",
+    "dateModified": "2021-01-22T00:00Z",
     
     
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://colorlessean.github.io/post/firstpost/"
+        "@id": "https://colorlessean.github.io/post/authapi/"
     }
 }
     </script>
@@ -198,13 +198,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">First Post</h1>
+        <h1 class="post-title">Authorization API</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2021-01-11T20:23:37-06:00">
-            Jan 11, 2021
+          <time class="post-date" datetime="2021-01-22T00:00:00Z">
+            Jan 22, 2021
           </time>
         
          
@@ -212,8 +212,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     </header>
 
     <section class="post-content">
-      <p>This is the first post in the blog website&hellip;</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>The first and arguably most important part of the Back-End service is the authorization API.</p>
+<h2 id="purpose">Purpose</h2>
+<p>The authorization API is built to handle authorizing clients. Clients can be the device or the user of the chrome extension. To the authorization service there really is no difference between the two. The authorization API is there to take in a client name and password. It then returns the client a JWT. The JWT is used to ensure that the client can secure its connection with the product API allowing the product API to remain stateless. In other words each API request can be authorized separately without needing to have a client logged in to the product service.</p>
+<h2 id="jwt">JWT</h2>
+<p>JSON Web Tokens. They are are one of two security components in the Product API and are the very purpose of having an authorization API. JSON web tokens are used to securely transmit information encoded as JSON. JWT are signed with a secret and their payload themselves. This is used to generate a unique JWT whose contents must match what they were when the JWT was created. They are useful for allowing a user to use a JWT instead of sending their user credentials every single time. This is the purpose of using the JWT for the product API. JWTs are also able to expire allowing a JWT to be essentially useless even if they can be grabbed.</p>
+<h2 id="https">HTTPS</h2>
+<p>HTTPS is an end to end encryption schema used on top of HTTP. It is the second component of security in the product api and the main security in the authorization API. By having the sender and receiver agree on a pair of private and public keys information can be sent between such that only the intended destinations can unpack the encrypted payload. This ensures that it is very difficult to see data being sent between clients and servers.</p>
+<h2 id="two-pronged-approach">Two Pronged Approach</h2>
+<p>By combining the usage of JWTs and HTTPS it is nearly impossible to impersonate a user maliciously by a third party. Even if HTTPS is broken unless the malicious party has cracked a message they will not have the users credentials as there is only a JWT for authorization. Since the JWT will expire after a certain period it is very unlikely to have cracked the HTTPS payload in the time period before the JWT expires. So the user is kept safe.</p>
+<h2 id="salting-and-hashing">Salting and Hashing</h2>
+<p>When a user signs up or signs in they are sending a raw password. This should not be persistently kept in storage. Thus in order to keep stored passwords encrypted a salt and hash method it used. Hashing algorithms take an input and produce an encrypted hash. However, this is not usually sufficient. If the user uses a rainbow table to try to guess common passwords using common hashing algorithms they may already have the users passwords to compare against the authorization database. Thus they can get massive amount of user passwords at once. So in order to prevent this a salt is added to the beginning or end of user&rsquo;s inputs. This is to ensure that the rainbow table attack cannot occur and would take hours to months to years to crack individual user passwords. The salt is kept a secret and is usually very long.</p>
+<h2 id="endpoints">Endpoints</h2>
+<p>The authorization API has three endpoints.</p>
+<ol>
+<li>signin</li>
+<li>signup</li>
+<li>refresh</li>
+</ol>
+<p>signin is where the client will send their clientname and password and recieve a JWT to use with the product api.</p>
+<p>signup allows a new client to register and be added to the database. It will return the user a JWT to use right away.</p>
+<p>refresh is the endpoint that clients will hit before their JWT expires. However, it will not issue a new JWT if the old one is not close to expiring.</p>
 
     </section>
 
@@ -252,19 +271,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=First%20Post&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Authorization%20API&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fauthapi%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2fauthapi%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f&amp;description=First%20Post"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fauthapi%2f&amp;description=Authorization%20API"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fauthapi%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -288,17 +307,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/authapi/">
+      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/mechredesign/">
           <section class="post">
-              <h2>Authorization API</h2>
+              <h2>Mechanical Redesign</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/progress/">
+      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/firstpost/">
           <section class="post">
-              <h2>Progress</h2>
+              <h2>First Post</h2>
           </section>
       </a>
   

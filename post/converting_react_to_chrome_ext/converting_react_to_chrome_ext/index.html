@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="First Post"/>
+<meta name="twitter:title" content="React app to Chrome extension"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="First Post &middot; Porch Vault" />
+  	<meta property="og:title" content="React app to Chrome extension &middot; Porch Vault" />
   	<meta property="og:site_name" content="Porch Vault" />
-  	<meta property="og:url" content="https://colorlessean.github.io/post/firstpost/" />
+  	<meta property="og:url" content="https://colorlessean.github.io/post/converting_react_to_chrome_ext/converting_react_to_chrome_ext/" />
 
     
         
@@ -31,16 +31,15 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2021-01-11T20:23:37-06:00" />
+    <meta property="article:published_time" content="2021-02-25T00:00:00Z" />
 
     
     
 
-    <title>First Post &middot; Porch Vault</title>
+    <title>React app to Chrome extension &middot; Porch Vault</title>
 
     
-    <meta name="description" content="This is the first post in the blog website&amp;hellip;
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore" />
+    <meta name="description" content="Converting a React App to a Chrome Extension Hello everyone! This blog post goes over the procedure we followed to convert our companion React app to a Chrome e" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -64,7 +63,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
     <meta name="generator" content="Hugo 0.68.3" />
 
-    <link rel="canonical" href="https://colorlessean.github.io/post/firstpost/" />
+    <link rel="canonical" href="https://colorlessean.github.io/post/converting_react_to_chrome_ext/converting_react_to_chrome_ext/" />
 
     
       
@@ -101,23 +100,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             
         ]
     },
-    "headline": "First Post",
-    "name": "First Post",
-    "wordCount":  78 ,
-    "timeRequired": "PT1M",
+    "headline": "React app to Chrome extension",
+    "name": "React app to Chrome extension",
+    "wordCount":  218 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://colorlessean.github.io/post/firstpost/",
-    "datePublished": "2021-01-11T20:23Z",
-    "dateModified": "2021-01-11T20:23Z",
+    "url": "https://colorlessean.github.io/post/converting_react_to_chrome_ext/converting_react_to_chrome_ext/",
+    "datePublished": "2021-02-25T00:00Z",
+    "dateModified": "2021-02-25T00:00Z",
     
     
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://colorlessean.github.io/post/firstpost/"
+        "@id": "https://colorlessean.github.io/post/converting_react_to_chrome_ext/converting_react_to_chrome_ext/"
     }
 }
     </script>
@@ -198,13 +197,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">First Post</h1>
+        <h1 class="post-title">React app to Chrome extension</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2021-01-11T20:23:37-06:00">
-            Jan 11, 2021
+          <time class="post-date" datetime="2021-02-25T00:00:00Z">
+            Feb 25, 2021
           </time>
         
          
@@ -212,8 +211,42 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     </header>
 
     <section class="post-content">
-      <p>This is the first post in the blog website&hellip;</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <h1 id="converting-a-react-app-to-a-chrome-extension">Converting a React App to a Chrome Extension</h1>
+<p>Hello everyone!  This blog post goes over the procedure we
+followed to convert our companion React app to a Chrome extension.
+The post follows the assumption that all Node/React dependencies
+have been installed and the developer is using a Linux environment.</p>
+<ol>
+<li>Add a .env file in the root directory of your React app.  In
+this file, set the environment variable <code>INLINE_RUNTIME_CHUNK=false</code>.
+If this environment variable isn&rsquo;t set, webpack will inline
+Javascript code in the HTML, which Chrome won&rsquo;t allow for XSS
+security reasons.</li>
+<li>Add a <code>manifest.json</code> file in the <code>/public</code> directory.  This will
+contain a bunch of settings Chrome will need to run the extension.
+The following suffices for a simple extension:</li>
+</ol>
+<pre><code>{
+  &quot;manifest_version&quot;: 2,
+
+  &quot;name&quot;: &quot;My Extension&quot;,
+  &quot;description&quot;: &quot;This extension is a starting point to create a real Chrome extension&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+
+  &quot;browser_action&quot;: {
+    &quot;default_popup&quot;: &quot;index.html&quot;,
+    &quot;default_title&quot;: &quot;Open the popup&quot;
+  },
+  &quot;permissions&quot;: [
+  ]
+}
+</code></pre><ol>
+<li>Build the project with <code>npm run build</code>.  This compiles output into the <code>build</code> directory.</li>
+<li>Open Chrome.  Navigate to the URL <code>chrome://extensions</code> menu.</li>
+<li>Turn on developer mode.</li>
+<li>Click the <code>Load Unpacked</code> button and select the build folder generated in Step 3.</li>
+</ol>
+<p>At this point, the Chrome extension should be added to your toolbar and can be used by clicking on the icon!  Congratulation, you&rsquo;re done.</p>
 
     </section>
 
@@ -231,12 +264,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 <figure class="author-image">
-    <a class="img" href="https://colorlessean.github.io/" style="background-image: url(/images/logo.png)"><span class="hidden">Sean O&#39;Sullivan's Picture</span></a>
+    <a class="img" href="https://colorlessean.github.io/" style="background-image: url(/images/logo.png)"><span class="hidden">Justin Borromeo's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://colorlessean.github.io/">Sean O&#39;Sullivan</a></h4>
+  <h4><a href="https://colorlessean.github.io/">Justin Borromeo</a></h4>
   
   <p>Read <a href="https://colorlessean.github.io/">more posts</a> by this author.</p>
   
@@ -252,19 +285,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=First%20Post&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=React%20app%20to%20Chrome%20extension&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2fconverting_react_to_chrome_ext%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2fconverting_react_to_chrome_ext%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f&amp;description=First%20Post"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2fconverting_react_to_chrome_ext%2f&amp;description=React%20app%20to%20Chrome%20extension"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2fconverting_react_to_chrome_ext%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -288,17 +321,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/authapi/">
+      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/productapi/">
           <section class="post">
-              <h2>Authorization API</h2>
+              <h2>Product API</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/progress/">
+      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/emailnotifications/">
           <section class="post">
-              <h2>Progress</h2>
+              <h2>Email Notifications</h2>
           </section>
       </a>
   

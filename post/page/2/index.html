@@ -186,9 +186,11 @@
 	<div class="extra-pagination inner">
     <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 5</span>
+	    <a class="newer-posts" href="https://colorlessean.github.io/post/">&larr; Newer Posts</a>
 	
-	    <a class="older-posts" href="https://colorlessean.github.io/post/page/2/">Older Posts &rarr;</a>
+	<span class="page-number">Page 2 of 5</span>
+	
+	    <a class="older-posts" href="https://colorlessean.github.io/post/page/3/">Older Posts &rarr;</a>
 	
 </nav>
 
@@ -197,47 +199,12 @@
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://colorlessean.github.io/post/mechfab/">Mechanical Fabrication</a></h2>
+        <h2 class="post-title"><a href="https://colorlessean.github.io/post/apiadjustments/">API Adjustments</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p>With the arrival of the wood from Home Depot, construction of the enclosure could begin. Cuts were planned out for the outer frame, with much wood left over for the lid or as emergency extra. There were many defects with the wood (warping, twisting, and splitting to name a few), but due to the project timeline, concessions had to be made.
-After initial cuts, pilot holes were drilled to prevent the pieces from splitting and the 4 main panels were assembled using #6 x 2” wood screws. <a class="read-more" href="https://colorlessean.github.io/post/mechfab/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://colorlessean.github.io/images/logo.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            Bennett Fleming
-                 
-        
-
-        
-        <time class="post-date" datetime="2021-03-06T00:00:00Z">
-            6 Mar 2021
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://colorlessean.github.io/post/databaseschema/">Database Schema</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>Database Technology The database is created using SQLite3. Given that the project is an MVP it seemed suitable to go with the ease of use and size of a SQLite database.
-Split Similar to the APIs two halves of the database are kept completely separate. The product and authorization. The authorization contains one table. With the product containing four tables.
-Authorization The authorization database is used specifically to hold the clients login information. <a class="read-more" href="https://colorlessean.github.io/post/databaseschema/">&raquo;</a></p>
+            <p>During the creation of the chrome extension a few issues have arisen that are worth mentioning.
+The device page for individual devices are meant to display a list of the delivery PINs that are associated with the device. In the original API schema it had been somewhat assumed that the device endpoint would be able to handle this type of request. In the actual implementation however it would be putting unfitting to put such logic in the device endpoint. <a class="read-more" href="https://colorlessean.github.io/post/apiadjustments/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -257,8 +224,42 @@ Authorization The authorization database is used specifically to hold the client
         
 
         
-        <time class="post-date" datetime="2021-03-02T00:00:00Z">
-            2 Mar 2021
+        <time class="post-date" datetime="2021-03-01T00:00:00Z">
+            1 Mar 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://colorlessean.github.io/post/productapi/">Product API</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>Purpose The product API is the second component of the back-end service. It is responsible for all the business logic in the product.
+Security Middleware The product API is a stateless API. In essence this means that the API will not remember if a client is signed in or not. It will simply take in any API request handle it the same way based on the payload and return immediately. In order to tell the API that a client is authorized to do what its requesting there needs to be a layer of security. <a class="read-more" href="https://colorlessean.github.io/post/productapi/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://colorlessean.github.io/images/logo.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Sean O&#39;Sullivan
+                 
+        
+
+        
+        <time class="post-date" datetime="2021-02-27T00:00:00Z">
+            27 Feb 2021
         </time>
     </footer>
 </article>
@@ -267,9 +268,11 @@ Authorization The authorization database is used specifically to hold the client
 
 	<nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 5</span>
+	    <a class="newer-posts" href="https://colorlessean.github.io/post/">&larr; Newer Posts</a>
 	
-	    <a class="older-posts" href="https://colorlessean.github.io/post/page/2/">Older Posts &rarr;</a>
+	<span class="page-number">Page 2 of 5</span>
+	
+	    <a class="older-posts" href="https://colorlessean.github.io/post/page/3/">Older Posts &rarr;</a>
 	
 </nav>
 

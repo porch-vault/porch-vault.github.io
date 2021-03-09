@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="First Post"/>
+<meta name="twitter:title" content="Database Schema"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="First Post &middot; Porch Vault" />
+  	<meta property="og:title" content="Database Schema &middot; Porch Vault" />
   	<meta property="og:site_name" content="Porch Vault" />
-  	<meta property="og:url" content="https://colorlessean.github.io/post/firstpost/" />
+  	<meta property="og:url" content="https://colorlessean.github.io/post/databaseschema/" />
 
     
         
@@ -31,16 +31,15 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2021-01-11T20:23:37-06:00" />
+    <meta property="article:published_time" content="2021-03-02T00:00:00Z" />
 
     
     
 
-    <title>First Post &middot; Porch Vault</title>
+    <title>Database Schema &middot; Porch Vault</title>
 
     
-    <meta name="description" content="This is the first post in the blog website&amp;hellip;
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore" />
+    <meta name="description" content="Database Technology The database is created using SQLite3. Given that the project is an MVP it seemed suitable to go with the ease of use and size of a SQLite d" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -64,7 +63,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
     <meta name="generator" content="Hugo 0.68.3" />
 
-    <link rel="canonical" href="https://colorlessean.github.io/post/firstpost/" />
+    <link rel="canonical" href="https://colorlessean.github.io/post/databaseschema/" />
 
     
       
@@ -101,23 +100,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             
         ]
     },
-    "headline": "First Post",
-    "name": "First Post",
-    "wordCount":  78 ,
-    "timeRequired": "PT1M",
+    "headline": "Database Schema",
+    "name": "Database Schema",
+    "wordCount":  322 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://colorlessean.github.io/post/firstpost/",
-    "datePublished": "2021-01-11T20:23Z",
-    "dateModified": "2021-01-11T20:23Z",
+    "url": "https://colorlessean.github.io/post/databaseschema/",
+    "datePublished": "2021-03-02T00:00Z",
+    "dateModified": "2021-03-02T00:00Z",
     
     
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://colorlessean.github.io/post/firstpost/"
+        "@id": "https://colorlessean.github.io/post/databaseschema/"
     }
 }
     </script>
@@ -198,13 +197,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">First Post</h1>
+        <h1 class="post-title">Database Schema</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2021-01-11T20:23:37-06:00">
-            Jan 11, 2021
+          <time class="post-date" datetime="2021-03-02T00:00:00Z">
+            Mar 2, 2021
           </time>
         
          
@@ -212,8 +211,49 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     </header>
 
     <section class="post-content">
-      <p>This is the first post in the blog website&hellip;</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <h2 id="database-technology">Database Technology</h2>
+<p>The database is created using SQLite3. Given that the project is an MVP it seemed suitable to go with the ease of use and size of a SQLite database.</p>
+<h2 id="split">Split</h2>
+<p>Similar to the APIs two halves of the database are kept completely separate. The product and authorization. The authorization contains one table. With the product containing four tables.</p>
+<h2 id="authorization">Authorization</h2>
+<p>The authorization database is used specifically to hold the clients login information.</p>
+<p>It contains a single table called authClient the columns are:</p>
+<ul>
+<li>clientName</li>
+<li>password</li>
+</ul>
+<p>The passwords are kept as hashed and salted encrypted versions.</p>
+<h2 id="product">Product</h2>
+<p>The product database holds all the information needed to complete the business logic of the entire application stack. It contains four tables.</p>
+<h3 id="user">User</h3>
+<p>The user table contains the user information. The columns are:</p>
+<ul>
+<li>userName(clientName)</li>
+<li>emailAddress</li>
+</ul>
+<p>Where the userName is a primary key and matches the clientName in the authClient table.</p>
+<h3 id="owns">Owns</h3>
+<p>The table contains the many to many relationship of users to devices. Since many users can own many devices and many devices can have many users this table is a necessary requirement to store that information. It contains two columns:</p>
+<ul>
+<li>userName</li>
+<li>deviceName</li>
+</ul>
+<h3 id="device">Device</h3>
+<p>This table contains the device information. It has the following columns:</p>
+<ul>
+<li>deviceName (clientName)</li>
+<li>devicePIN</li>
+<li>deviceCommonName</li>
+</ul>
+<p>The deviceName is the primary key and matches the clientName in the authClients table to allow devices to be clients of the product api as well. The devicePIN is the master pin that can be used many times by the user to retrieve their packages. DeviceCommonName being the name that will be displayed to the user on the chrome extension.</p>
+<h3 id="delivery">Delivery</h3>
+<p>This table contains the information for an individual delivery PIN. It contains the following columns:</p>
+<ul>
+<li>deliveryID</li>
+<li>deviceID</li>
+<li>deliveryPIN</li>
+</ul>
+<p>The delivery must know what device it belongs to hence the foreign key to the deviceName. It also contains a unique ID for the individual delivery to specifically access and delete it. The pin attribute being self explanatory.</p>
 
     </section>
 
@@ -252,19 +292,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=First%20Post&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Database%20Schema&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fdatabaseschema%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2fdatabaseschema%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f&amp;description=First%20Post"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fdatabaseschema%2f&amp;description=Database%20Schema"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fdatabaseschema%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -288,17 +328,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/authapi/">
+      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/mechfab/">
           <section class="post">
-              <h2>Authorization API</h2>
+              <h2>Mechanical Fabrication</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/progress/">
+      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/apiadjustments/">
           <section class="post">
-              <h2>Progress</h2>
+              <h2>API Adjustments</h2>
           </section>
       </a>
   
