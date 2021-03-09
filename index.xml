@@ -55,10 +55,10 @@ Security Middleware The product API is a stateless API. In essence this means th
     
     <item>
       <title>React app to Chrome extension</title>
-      <link>https://colorlessean.github.io/post/converting_react_to_chrome_ext/converting_react_to_chrome_ext/</link>
+      <link>https://colorlessean.github.io/post/converting_react_to_chrome_ext/</link>
       <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://colorlessean.github.io/post/converting_react_to_chrome_ext/converting_react_to_chrome_ext/</guid>
+      <guid>https://colorlessean.github.io/post/converting_react_to_chrome_ext/</guid>
       <description>Converting a React App to a Chrome Extension Hello everyone! This blog post goes over the procedure we followed to convert our companion React app to a Chrome extension. The post follows the assumption that all Node/React dependencies have been installed and the developer is using a Linux environment.
  Add a .env file in the root directory of your React app. In this file, set the environment variable INLINE_RUNTIME_CHUNK=false. If this environment variable isn&amp;rsquo;t set, webpack will inline Javascript code in the HTML, which Chrome won&amp;rsquo;t allow for XSS security reasons.</description>
     </item>

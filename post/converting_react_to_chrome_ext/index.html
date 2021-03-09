@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="Email Notifications"/>
+<meta name="twitter:title" content="React app to Chrome extension"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="Email Notifications &middot; Porch Vault" />
+  	<meta property="og:title" content="React app to Chrome extension &middot; Porch Vault" />
   	<meta property="og:site_name" content="Porch Vault" />
-  	<meta property="og:url" content="https://colorlessean.github.io/post/emailnotifications/" />
+  	<meta property="og:url" content="https://colorlessean.github.io/post/converting_react_to_chrome_ext/" />
 
     
         
@@ -31,15 +31,15 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2021-02-15T00:00:00Z" />
+    <meta property="article:published_time" content="2021-02-25T00:00:00Z" />
 
     
     
 
-    <title>Email Notifications &middot; Porch Vault</title>
+    <title>React app to Chrome extension &middot; Porch Vault</title>
 
     
-    <meta name="description" content="Setting Up The Porch Vault Email account was set up to use as an automated email service. In order to set this up to do so two things needed to be done. First t" />
+    <meta name="description" content="Converting a React App to a Chrome Extension Hello everyone! This blog post goes over the procedure we followed to convert our companion React app to a Chrome e" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -63,7 +63,7 @@
     
     <meta name="generator" content="Hugo 0.68.3" />
 
-    <link rel="canonical" href="https://colorlessean.github.io/post/emailnotifications/" />
+    <link rel="canonical" href="https://colorlessean.github.io/post/converting_react_to_chrome_ext/" />
 
     
       
@@ -100,23 +100,23 @@
             
         ]
     },
-    "headline": "Email Notifications",
-    "name": "Email Notifications",
-    "wordCount":  156 ,
-    "timeRequired": "PT1M",
+    "headline": "React app to Chrome extension",
+    "name": "React app to Chrome extension",
+    "wordCount":  218 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://colorlessean.github.io/post/emailnotifications/",
-    "datePublished": "2021-02-15T00:00Z",
-    "dateModified": "2021-02-15T00:00Z",
+    "url": "https://colorlessean.github.io/post/converting_react_to_chrome_ext/",
+    "datePublished": "2021-02-25T00:00Z",
+    "dateModified": "2021-02-25T00:00Z",
     
     
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://colorlessean.github.io/post/emailnotifications/"
+        "@id": "https://colorlessean.github.io/post/converting_react_to_chrome_ext/"
     }
 }
     </script>
@@ -197,13 +197,13 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">Email Notifications</h1>
+        <h1 class="post-title">React app to Chrome extension</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2021-02-15T00:00:00Z">
-            Feb 15, 2021
+          <time class="post-date" datetime="2021-02-25T00:00:00Z">
+            Feb 25, 2021
           </time>
         
          
@@ -211,8 +211,42 @@
     </header>
 
     <section class="post-content">
-      <h2 id="setting-up">Setting Up</h2>
-<p>The Porch Vault Email account was set up to use as an automated email service. In order to set this up to do so two things needed to be done. First the gmail account needed to have outside applications access sending from the email account. The second was setting up an SMTP service on the back end server. Setting up the gmail permission was straightforward. Then setting up the SMTP service required setting up an email sending service on the backend of the web server. The function upon being built out used user email addresses. The notify function was hooked up to the actual verify endpoint but only upon successful verification. This sends a notification to the user that access has happened to their box. This seemed like a standard thing to do in the modern web app space. SMS notification would have been a good stretch goal but we it does seem overkill.</p>
+      <h1 id="converting-a-react-app-to-a-chrome-extension">Converting a React App to a Chrome Extension</h1>
+<p>Hello everyone!  This blog post goes over the procedure we
+followed to convert our companion React app to a Chrome extension.
+The post follows the assumption that all Node/React dependencies
+have been installed and the developer is using a Linux environment.</p>
+<ol>
+<li>Add a .env file in the root directory of your React app.  In
+this file, set the environment variable <code>INLINE_RUNTIME_CHUNK=false</code>.
+If this environment variable isn&rsquo;t set, webpack will inline
+Javascript code in the HTML, which Chrome won&rsquo;t allow for XSS
+security reasons.</li>
+<li>Add a <code>manifest.json</code> file in the <code>/public</code> directory.  This will
+contain a bunch of settings Chrome will need to run the extension.
+The following suffices for a simple extension:</li>
+</ol>
+<pre><code>{
+  &quot;manifest_version&quot;: 2,
+
+  &quot;name&quot;: &quot;My Extension&quot;,
+  &quot;description&quot;: &quot;This extension is a starting point to create a real Chrome extension&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+
+  &quot;browser_action&quot;: {
+    &quot;default_popup&quot;: &quot;index.html&quot;,
+    &quot;default_title&quot;: &quot;Open the popup&quot;
+  },
+  &quot;permissions&quot;: [
+  ]
+}
+</code></pre><ol>
+<li>Build the project with <code>npm run build</code>.  This compiles output into the <code>build</code> directory.</li>
+<li>Open Chrome.  Navigate to the URL <code>chrome://extensions</code> menu.</li>
+<li>Turn on developer mode.</li>
+<li>Click the <code>Load Unpacked</code> button and select the build folder generated in Step 3.</li>
+</ol>
+<p>At this point, the Chrome extension should be added to your toolbar and can be used by clicking on the icon!  Congratulation, you&rsquo;re done.</p>
 
     </section>
 
@@ -230,12 +264,12 @@
 
 
 <figure class="author-image">
-    <a class="img" href="https://colorlessean.github.io/" style="background-image: url(/images/logo.png)"><span class="hidden">Sean O&#39;Sullivan's Picture</span></a>
+    <a class="img" href="https://colorlessean.github.io/" style="background-image: url(/images/logo.png)"><span class="hidden">Justin Borromeo's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://colorlessean.github.io/">Sean O&#39;Sullivan</a></h4>
+  <h4><a href="https://colorlessean.github.io/">Justin Borromeo</a></h4>
   
   <p>Read <a href="https://colorlessean.github.io/">more posts</a> by this author.</p>
   
@@ -251,19 +285,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Email%20Notifications&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2femailnotifications%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=React%20app%20to%20Chrome%20extension&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2femailnotifications%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2femailnotifications%2f&amp;description=Email%20Notifications"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2f&amp;description=React%20app%20to%20Chrome%20extension"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2femailnotifications%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcolorlessean.github.io%2fpost%2fconverting_react_to_chrome_ext%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -287,17 +321,17 @@
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/converting_react_to_chrome_ext/">
+      <a class="read-next-story" style="no-cover" href="https://colorlessean.github.io/post/productapi/">
           <section class="post">
-              <h2>React app to Chrome extension</h2>
+              <h2>Product API</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/mechredesign/">
+      <a class="read-next-story prev" style="no-cover" href="https://colorlessean.github.io/post/emailnotifications/">
           <section class="post">
-              <h2>Mechanical Redesign</h2>
+              <h2>Email Notifications</h2>
           </section>
       </a>
   
