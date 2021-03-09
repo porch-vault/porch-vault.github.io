@@ -97,7 +97,7 @@ Security Middleware The product API is a stateless API. In essence this means th
       
       <guid>https://porch-vault.github.io/post/elec-fab/</guid>
       <description>Soldering It was decided that a perforated board, or perfboard, would carry most of the discrete electrical components, since it could easily slide on an off of the Pi.
-Next, wiring harnesses for the gyro and keypad were cut and crimped into dupont connectors. thsi allowed for ease of switching out faulty components. The relay, LiPo battery, and solenoid were also wired up using custom cables and connectors.
+Next, wiring harnesses for the gyro and keypad were cut and crimped into dupont connectors. this allowed for ease of switching out faulty components. The relay, LiPo battery, and solenoid were also wired up using custom cables and connectors.
 A benchtop test was performed using the discrete components and a breadboard.</description>
     </item>
     
