@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Firmware Development</title>
+      <link>https://porch-vault.github.io/post/elec-firmware/</link>
+      <pubDate>Sun, 07 Mar 2021 10:20:12 -0500</pubDate>
+      
+      <guid>https://porch-vault.github.io/post/elec-firmware/</guid>
+      <description>State Machine Digital Interfaces IMU Interface Web Client </description>
+    </item>
+    
+    <item>
       <title>Mechanical Fabrication</title>
       <link>https://porch-vault.github.io/post/mechfab/</link>
       <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
@@ -82,6 +91,17 @@ Security Middleware The product API is a stateless API. In essence this means th
     </item>
     
     <item>
+      <title>Electrical Fabrication Revisions</title>
+      <link>https://porch-vault.github.io/post/elec-fab/</link>
+      <pubDate>Mon, 25 Jan 2021 18:19:23 -0500</pubDate>
+      
+      <guid>https://porch-vault.github.io/post/elec-fab/</guid>
+      <description>Soldering It was decided that a perforated board, or perfboard, would carry most of the discrete electrical components, since it could easily slide on an off of the Pi.
+Next, wiring harnesses for the gyro and keypad were cut and crimped into dupont connectors. thsi allowed for ease of switching out faulty components. The relay, LiPo battery, and solenoid were also wired up using custom cables and connectors.
+A benchtop test was performed using the discrete components and a breadboard.</description>
+    </item>
+    
+    <item>
       <title>Authorization API</title>
       <link>https://porch-vault.github.io/post/authapi/</link>
       <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
@@ -89,6 +109,16 @@ Security Middleware The product API is a stateless API. In essence this means th
       <guid>https://porch-vault.github.io/post/authapi/</guid>
       <description>The first and arguably most important part of the Back-End service is the authorization API.
 Purpose The authorization API is built to handle authorizing clients. Clients can be the device or the user of the chrome extension. To the authorization service there really is no difference between the two. The authorization API is there to take in a client name and password. It then returns the client a JWT. The JWT is used to ensure that the client can secure its connection with the product API allowing the product API to remain stateless.</description>
+    </item>
+    
+    <item>
+      <title>Electrical Design Revisions</title>
+      <link>https://porch-vault.github.io/post/elec-designs/</link>
+      <pubDate>Mon, 18 Jan 2021 18:20:12 -0500</pubDate>
+      
+      <guid>https://porch-vault.github.io/post/elec-designs/</guid>
+      <description>Overview PorchVault&amp;rsquo;s electrical design is centered around a Raspberry Pi Zero-w, which is equipped with Wifi and general purpose inputs/outputs (GPIO). This made it simple to integrate any peripheral devices needed and connect to the pin validation server.
+Initial Designs Integrating the keypad, inertial measurement unit (IMU), speaker, and LEDs was as simple as planning in wiring buses and resistors to their GPIO pins, whether it be I2C or digital IO pins.</description>
     </item>
     
     <item>

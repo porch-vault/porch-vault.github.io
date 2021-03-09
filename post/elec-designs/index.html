@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="First Post"/>
+<meta name="twitter:title" content="Electrical Design Revisions"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="First Post &middot; Porch Vault" />
+  	<meta property="og:title" content="Electrical Design Revisions &middot; Porch Vault" />
   	<meta property="og:site_name" content="Porch Vault" />
-  	<meta property="og:url" content="https://porch-vault.github.io/post/firstpost/" />
+  	<meta property="og:url" content="https://porch-vault.github.io/post/elec-designs/" />
 
     
         
@@ -31,16 +31,15 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2021-01-11T20:23:37-06:00" />
+    <meta property="article:published_time" content="2021-01-18T18:20:12-05:00" />
 
     
     
 
-    <title>First Post &middot; Porch Vault</title>
+    <title>Electrical Design Revisions &middot; Porch Vault</title>
 
     
-    <meta name="description" content="This is the first post in the blog website&amp;hellip;
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore" />
+    <meta name="description" content="Overview PorchVault&amp;rsquo;s electrical design is centered around a Raspberry Pi Zero-w, which is equipped with Wifi and general purpose inputs/outputs (GPIO). T" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -64,7 +63,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
     <meta name="generator" content="Hugo 0.68.3" />
 
-    <link rel="canonical" href="https://porch-vault.github.io/post/firstpost/" />
+    <link rel="canonical" href="https://porch-vault.github.io/post/elec-designs/" />
 
     
       
@@ -101,23 +100,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             
         ]
     },
-    "headline": "First Post",
-    "name": "First Post",
-    "wordCount":  78 ,
-    "timeRequired": "PT1M",
+    "headline": "Electrical Design Revisions",
+    "name": "Electrical Design Revisions",
+    "wordCount":  426 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://porch-vault.github.io/post/firstpost/",
-    "datePublished": "2021-01-11T20:23Z",
-    "dateModified": "2021-01-11T20:23Z",
+    "url": "https://porch-vault.github.io/post/elec-designs/",
+    "datePublished": "2021-01-18T18:20Z",
+    "dateModified": "2021-01-18T18:20Z",
     
     
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://porch-vault.github.io/post/firstpost/"
+        "@id": "https://porch-vault.github.io/post/elec-designs/"
     }
 }
     </script>
@@ -198,13 +197,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">First Post</h1>
+        <h1 class="post-title">Electrical Design Revisions</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2021-01-11T20:23:37-06:00">
-            Jan 11, 2021
+          <time class="post-date" datetime="2021-01-18T18:20:12-05:00">
+            Jan 18, 2021
           </time>
         
          
@@ -212,8 +211,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     </header>
 
     <section class="post-content">
-      <p>This is the first post in the blog website&hellip;</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <h2 id="overview">Overview</h2>
+<p>PorchVault&rsquo;s electrical design is centered around a Raspberry Pi Zero-w, which is equipped with Wifi and general purpose inputs/outputs (GPIO).
+This made it simple to integrate any peripheral devices needed and
+connect to the pin validation server.</p>
+<p><img src="integration.png" alt=""></p>
+<h2 id="initial-designs">Initial Designs</h2>
+<p>Integrating the keypad, inertial measurement unit (IMU), speaker, and LEDs was as simple as
+planning in wiring buses and resistors to their GPIO pins, whether it be I2C or digital IO pins.</p>
+<p>The larger challenge was actuating the lock solenoid. The initial design, as seen below, was to use a 5-volt power bank with a sufficient capacity and current limit. This would would allow for a simpler design with a single battery to keep charged. the solenoid lock would be connected to a step-up DC-DC converter, boosting the power bank&rsquo;s 5V signal to 12V. In practice however, when the transistor switch was closed and power could flow through the boost converter, problems occurred on both sides. The Raspberry Pi&rsquo;s own 5V rail dropped below a critical level which could have corrupted its software, and the lock would not boost to the required voltage.</p>
+<p><img src="revE.png" alt=""></p>
+<h2 id="electrical-redesign">Electrical Redesign</h2>
+<p>To work around this problem, it was decided to switch to using a step-down converter over a step-up. Additionally, the Raspberry Pi and the solenoid would each have their own power source. The Pi would continue using the 5V power bank while the lock would use an auxiliary battery. For cost and convenience, a 4-cell lithium-polymer battery was used, and the aforementioned step-down converter acted as a 12-volt regulator since the nominal voltage of the LiPo is around 15-16V.</p>
+<p>To actuate the lock, a relay was used. The relay acts allowed the Pi to treat the solenoid like a &lsquo;black box&rsquo;, where it only needed to send a binary signal to control its behaviour. The relay was normally-open, and closed its connection when its control pin was pulled to ground. From the perspective of the Pi, this means that the relay would act as a load, where the relay is drawing current from the Pi&rsquo;s 5V rail and sinking it through one of the Pi&rsquo;s GPIO pins, configured to be a push-pull pin. The current draw of the relay was likely higher than the current rating of the GPIO pin, putting it at risk. To solve this, the transistor switch was designed such that the Pi only needed to output a digital-HI signal and the BJT would sink all of the current needed.</p>
+<p>To protect the transistor from potential voltage spikes whendisconnecting the inductive load (solenoid), a flywheel diode was added.</p>
+<p><img src="revH.png" alt=""></p>
 
     </section>
 
@@ -231,12 +243,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 <figure class="author-image">
-    <a class="img" href="https://porch-vault.github.io/" style="background-image: url(/images/logo.png)"><span class="hidden">Sean O&#39;Sullivan's Picture</span></a>
+    <a class="img" href="https://porch-vault.github.io/" style="background-image: url(/images/logo.png)"><span class="hidden">Matthew Romlewski's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://porch-vault.github.io/">Sean O&#39;Sullivan</a></h4>
+  <h4><a href="https://porch-vault.github.io/">Matthew Romlewski</a></h4>
   
   <p>Read <a href="https://porch-vault.github.io/">more posts</a> by this author.</p>
   
@@ -252,19 +264,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=First%20Post&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fporch-vault.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Electrical%20Design%20Revisions&nbsp;-&nbsp;Porch%20Vault&amp;url=https%3a%2f%2fporch-vault.github.io%2fpost%2felec-designs%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fporch-vault.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fporch-vault.github.io%2fpost%2felec-designs%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fporch-vault.github.io%2fpost%2ffirstpost%2f&amp;description=First%20Post"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fporch-vault.github.io%2fpost%2felec-designs%2f&amp;description=Electrical%20Design%20Revisions"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fporch-vault.github.io%2fpost%2ffirstpost%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fporch-vault.github.io%2fpost%2felec-designs%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -288,17 +300,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://porch-vault.github.io/post/elec-designs/">
+      <a class="read-next-story" style="no-cover" href="https://porch-vault.github.io/post/authapi/">
           <section class="post">
-              <h2>Electrical Design Revisions</h2>
+              <h2>Authorization API</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://porch-vault.github.io/post/progress/">
+      <a class="read-next-story prev" style="no-cover" href="https://porch-vault.github.io/post/firstpost/">
           <section class="post">
-              <h2>Progress</h2>
+              <h2>First Post</h2>
           </section>
       </a>
   
