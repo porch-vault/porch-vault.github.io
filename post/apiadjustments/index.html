@@ -62,7 +62,7 @@ The device page for individual devices are meant to display a li" />
       
       
     
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.36" />
 
     <link rel="canonical" href="https://porch-vault.github.io/post/apiadjustments/" />
 
@@ -75,21 +75,21 @@ The device page for individual devices are meant to display a li" />
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name":  null ,
-        "logo": "https://porch-vault.github.io/images/logo.png"
+        "name": ,
+        "logo": https://porch-vault.github.io/images/logo.png
     },
     "author": {
         "@type": "Person",
-        "name":  null ,
+        "name": ,
         
         "image": {
             "@type": "ImageObject",
-            "url": "https://porch-vault.github.io/images/logo.png",
+            "url": https://porch-vault.github.io/images/logo.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url":  null ,
+        "url": ,
         "sameAs": [
             
             
@@ -101,23 +101,23 @@ The device page for individual devices are meant to display a li" />
             
         ]
     },
-    "headline": "API Adjustments",
-    "name": "API Adjustments",
-    "wordCount":  167 ,
+    "headline": API Adjustments,
+    "name": API Adjustments,
+    "wordCount": 167,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
-      "alternateName": "en"
+      "alternateName": en
     },
-    "url": "https://porch-vault.github.io/post/apiadjustments/",
-    "datePublished": "2021-03-01T00:00Z",
-    "dateModified": "2021-03-01T00:00Z",
+    "url": https://porch-vault.github.io/post/apiadjustments/,
+    "datePublished": 2021-03-01T00:00Z,
+    "dateModified": 2021-03-01T00:00Z,
     
     
-    "description": "",
+    "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://porch-vault.github.io/post/apiadjustments/"
+        "@id": https://porch-vault.github.io/post/apiadjustments/
     }
 }
     </script>
@@ -213,6 +213,7 @@ The device page for individual devices are meant to display a li" />
 
     <section class="post-content">
       <p>During the creation of the chrome extension a few issues have arisen that are worth mentioning.</p>
+
 <p>The device page for individual devices are meant to display a list of the delivery PINs that are associated with the device. In the original API schema it had been somewhat assumed that the device endpoint would be able to handle this type of request. In the actual implementation however it would be putting unfitting to put such logic in the device endpoint. The device endpoint is responsible for the actual devices not what the device have registered as deliveries. However, putting this in the delivery endpoint would also make little sense. The delivery endpoint is for dealing with single delivery PINs. Thus we fall upon the same reason that the owns endpoint was built which is to represent a relationship between database tables. Therefore another endpoint called /deliveries/ was added. Where a user can specify their unique deviceName (different from the display common name) and get the delivery PINs associated.</p>
 
     </section>

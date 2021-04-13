@@ -61,7 +61,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.36" />
 
     <link rel="canonical" href="https://porch-vault.github.io/post/converting_react_to_chrome_ext/" />
 
@@ -74,21 +74,21 @@
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name":  null ,
-        "logo": "https://porch-vault.github.io/images/logo.png"
+        "name": ,
+        "logo": https://porch-vault.github.io/images/logo.png
     },
     "author": {
         "@type": "Person",
-        "name":  null ,
+        "name": ,
         
         "image": {
             "@type": "ImageObject",
-            "url": "https://porch-vault.github.io/images/logo.png",
+            "url": https://porch-vault.github.io/images/logo.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url":  null ,
+        "url": ,
         "sameAs": [
             
             
@@ -100,23 +100,23 @@
             
         ]
     },
-    "headline": "React app to Chrome extension",
-    "name": "React app to Chrome extension",
-    "wordCount":  218 ,
+    "headline": React app to Chrome extension,
+    "name": React app to Chrome extension,
+    "wordCount": 218,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
-      "alternateName": "en"
+      "alternateName": en
     },
-    "url": "https://porch-vault.github.io/post/converting_react_to_chrome_ext/",
-    "datePublished": "2021-02-25T00:00Z",
-    "dateModified": "2021-02-25T00:00Z",
+    "url": https://porch-vault.github.io/post/converting_react_to_chrome_ext/,
+    "datePublished": 2021-02-25T00:00Z,
+    "dateModified": 2021-02-25T00:00Z,
     
     
-    "description": "",
+    "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://porch-vault.github.io/post/converting_react_to_chrome_ext/"
+        "@id": https://porch-vault.github.io/post/converting_react_to_chrome_ext/
     }
 }
     </script>
@@ -211,11 +211,15 @@
     </header>
 
     <section class="post-content">
-      <h1 id="converting-a-react-app-to-a-chrome-extension">Converting a React App to a Chrome Extension</h1>
+      
+
+<h1 id="converting-a-react-app-to-a-chrome-extension">Converting a React App to a Chrome Extension</h1>
+
 <p>Hello everyone!  This blog post goes over the procedure we
 followed to convert our companion React app to a Chrome extension.
 The post follows the assumption that all Node/React dependencies
 have been installed and the developer is using a Linux environment.</p>
+
 <ol>
 <li>Add a .env file in the root directory of your React app.  In
 this file, set the environment variable <code>INLINE_RUNTIME_CHUNK=false</code>.
@@ -226,6 +230,7 @@ security reasons.</li>
 contain a bunch of settings Chrome will need to run the extension.
 The following suffices for a simple extension:</li>
 </ol>
+
 <pre><code>{
   &quot;manifest_version&quot;: 2,
 
@@ -240,12 +245,15 @@ The following suffices for a simple extension:</li>
   &quot;permissions&quot;: [
   ]
 }
-</code></pre><ol>
+</code></pre>
+
+<ol>
 <li>Build the project with <code>npm run build</code>.  This compiles output into the <code>build</code> directory.</li>
 <li>Open Chrome.  Navigate to the URL <code>chrome://extensions</code> menu.</li>
 <li>Turn on developer mode.</li>
 <li>Click the <code>Load Unpacked</code> button and select the build folder generated in Step 3.</li>
 </ol>
+
 <p>At this point, the Chrome extension should be added to your toolbar and can be used by clicking on the icon!  Congratulation, you&rsquo;re done.</p>
 
     </section>

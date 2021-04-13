@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Porch Vault</title>
@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© PorchVault 2021</copyright>
-    <lastBuildDate>Mon, 11 Jan 2021 20:23:37 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 07 Mar 2021 10:20:12 -0500</lastBuildDate>
     
 	<atom:link href="https://porch-vault.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,7 +18,7 @@
       <pubDate>Sun, 07 Mar 2021 10:20:12 -0500</pubDate>
       
       <guid>https://porch-vault.github.io/post/elec-firmware/</guid>
-      <description>State Machine Digital Interfaces IMU Interface Web Client </description>
+      <description> State Machine Digital Interfaces IMU Interface Web Client </description>
     </item>
     
     <item>
@@ -59,7 +59,7 @@ The device page for individual devices are meant to display a list of the delive
       
       <guid>https://porch-vault.github.io/post/productapi/</guid>
       <description>Purpose The product API is the second component of the back-end service. It is responsible for all the business logic in the product.
-Security Middleware The product API is a stateless API. In essence this means that the API will not remember if a client is signed in or not. It will simply take in any API request handle it the same way based on the payload and return immediately. In order to tell the API that a client is authorized to do what its requesting there needs to be a layer of security.</description>
+Security Middleware The product API is a stateless API. In essence this means that the API will not remember if a client is signed in or not. It will simply take in any API request handle it the same way based on the payload and return immediately.</description>
     </item>
     
     <item>
@@ -69,7 +69,7 @@ Security Middleware The product API is a stateless API. In essence this means th
       
       <guid>https://porch-vault.github.io/post/converting_react_to_chrome_ext/</guid>
       <description>Converting a React App to a Chrome Extension Hello everyone! This blog post goes over the procedure we followed to convert our companion React app to a Chrome extension. The post follows the assumption that all Node/React dependencies have been installed and the developer is using a Linux environment.
- Add a .env file in the root directory of your React app. In this file, set the environment variable INLINE_RUNTIME_CHUNK=false. If this environment variable isn&amp;rsquo;t set, webpack will inline Javascript code in the HTML, which Chrome won&amp;rsquo;t allow for XSS security reasons.</description>
+ Add a .env file in the root directory of your React app. In this file, set the environment variable INLINE_RUNTIME_CHUNK=false.</description>
     </item>
     
     <item>
@@ -132,32 +132,12 @@ Mission Over the past decade, the popularity of e-commerce has exploded with con
     </item>
     
     <item>
-      <title>First Post</title>
-      <link>https://porch-vault.github.io/post/firstpost/</link>
-      <pubDate>Mon, 11 Jan 2021 20:23:37 -0600</pubDate>
-      
-      <guid>https://porch-vault.github.io/post/firstpost/</guid>
-      <description>This is the first post in the blog website&amp;hellip;
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
       <title>Porch Vault Product</title>
       <link>https://porch-vault.github.io/product/</link>
       <pubDate>Mon, 11 Jan 2021 20:23:37 -0600</pubDate>
       
       <guid>https://porch-vault.github.io/product/</guid>
-      <description>Over the past decade, the popularity of e-commerce has exploded with consumers attracted to the convenience of ordering via the Internet and having goods delivered in less than a week. With most of these packages being delivered to residences, porch piracy has become an increasingly prevalent problem. Every day in the US, ~$25M of delivered goods are reported as stolen. Most existing solutions are either expensive or involve inconveniencing consumers. We are working on the Porch Vault, a device that prevents porch piracy while maintaining the existing convenience and cost-effectiveness of e-commerce.</description>
-    </item>
-    
-    <item>
-      <title>Progress</title>
-      <link>https://porch-vault.github.io/post/progress/</link>
-      <pubDate>Mon, 11 Jan 2021 20:23:37 -0600</pubDate>
-      
-      <guid>https://porch-vault.github.io/post/progress/</guid>
-      <description>This is a bogus blog post to have as filler for page testing.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+      <description>Problem Over the past decade, the popularity of e-commerce has exploded with consumers attracted to the convenience of ordering via the Internet and having goods delivered in less than a week. With most of these packages being delivered to residences, porch piracy has become an increasingly prevalent problem. Every day in the US, ~$25M of delivered goods are reported as stolen. Most existing solutions are either expensive or involve inconveniencing consumers.</description>
     </item>
     
   </channel>

@@ -62,7 +62,7 @@ Security Middleware The pr" />
       
       
     
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.36" />
 
     <link rel="canonical" href="https://porch-vault.github.io/post/productapi/" />
 
@@ -75,21 +75,21 @@ Security Middleware The pr" />
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name":  null ,
-        "logo": "https://porch-vault.github.io/images/logo.png"
+        "name": ,
+        "logo": https://porch-vault.github.io/images/logo.png
     },
     "author": {
         "@type": "Person",
-        "name":  null ,
+        "name": ,
         
         "image": {
             "@type": "ImageObject",
-            "url": "https://porch-vault.github.io/images/logo.png",
+            "url": https://porch-vault.github.io/images/logo.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url":  null ,
+        "url": ,
         "sameAs": [
             
             
@@ -101,23 +101,23 @@ Security Middleware The pr" />
             
         ]
     },
-    "headline": "Product API",
-    "name": "Product API",
-    "wordCount":  593 ,
+    "headline": Product API,
+    "name": Product API,
+    "wordCount": 593,
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
-      "alternateName": "en"
+      "alternateName": en
     },
-    "url": "https://porch-vault.github.io/post/productapi/",
-    "datePublished": "2021-02-27T00:00Z",
-    "dateModified": "2021-02-27T00:00Z",
+    "url": https://porch-vault.github.io/post/productapi/,
+    "datePublished": 2021-02-27T00:00Z,
+    "dateModified": 2021-02-27T00:00Z,
     
     
-    "description": "",
+    "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://porch-vault.github.io/post/productapi/"
+        "@id": https://porch-vault.github.io/post/productapi/
     }
 }
     </script>
@@ -212,33 +212,62 @@ Security Middleware The pr" />
     </header>
 
     <section class="post-content">
-      <h2 id="purpose">Purpose</h2>
+      
+
+<h2 id="purpose">Purpose</h2>
+
 <p>The product API is the second component of the back-end service. It is responsible for all the business logic in the product.</p>
+
 <h2 id="security-middleware">Security Middleware</h2>
+
 <p>The product API is a stateless API. In essence this means that the API will not remember if a client is signed in or not. It will simply take in any API request handle it the same way based on the payload and return immediately. In order to tell the API that a client is authorized to do what its requesting there needs to be a layer of security. This is where the authorization token comes in. For this implementation JWTs are being made use of. The token is issued to users who are signed in by the authorization APi. A piece of middleware on the back-end will verify the token&rsquo;s validity before processing the request at the proper endpoint.</p>
+
 <h2 id="endpoints">Endpoints</h2>
+
 <h3 id="device">/device/</h3>
+
 <p>Device endpoint is responsible for individual devices.</p>
+
 <p>It has a single acceptable request type which is a GET request. This request takes in a unique device name and returns device information.</p>
+
 <h3 id="owns">/owns/</h3>
+
 <p>Endpoint is responsible for returning ownership relations between users and their owned devices.</p>
+
 <p>It has a single acceptable request type of GET. This request takes in the type of client which can be user or device. It returns a list of all the ownership relationships involving the requesting user or device.</p>
+
 <h3 id="delivery">/delivery/</h3>
+
 <p>Delivery is responsible for all of the delivery PIN operations.</p>
+
 <p>It has three HTTP request types available for usage. GET, POST, and DELETE.</p>
+
 <p>GET takes in a delivery ID and will return device name, and the delivery pin.</p>
+
 <p>POST takes in a device ID and delivery PIN and creates a new delivery for that device with the new pin.</p>
+
 <p>DELETE takes in a delivery ID and removes this from usage.</p>
+
 <h3 id="verify">/verify/</h3>
+
 <p>Verify is the endpoint that is used exclusively by the device. It is of course acceptable to call from anything but is used for the device to react upon the response to open or not.</p>
+
 <p>There is one acceptable call type which is a POST request. The caller sends a device name and the pin it&rsquo;s trying to verify. It then returns to the caller if the pin requested is valid or not as well as what type of pin it is if it was valid. I.e. if it was a master pin or delivery pin. If the pin is valid it will send an email notification to the user&rsquo;s email address. If the pin is a valid delivery pin it will automatically delete it from the database keeping the pin as a one time pin.</p>
+
 <h3 id="user">/user/</h3>
+
 <p>User is used to send and receive user information.</p>
+
 <p>There are two acceptable request types: GET and POST.</p>
+
 <p>Upon a GET request the client sends a user name and receives back the email address.</p>
+
 <p>Upon a POST request the client sends a user name and email address to be registered. This is called upon sign up so that the product database has a copy of the user state.</p>
+
 <h3 id="deliveries">/deliveries/</h3>
+
 <p>Deliveries is used to retrieve the relationship between a device and registered deliveries. Since this is a one to many relationship only the device name is needed to retrieve unique to it deliveries. There is only GET requests to this endpoint.</p>
+
 <p>Client needs to send a device name and will receive a list of deliveries with their delivery IDs, and list of PINs. This will be used by the chrome extension to allow users to see all their PINs for a each of their devices.</p>
 
     </section>

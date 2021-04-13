@@ -61,7 +61,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.36" />
 
     <link rel="canonical" href="https://porch-vault.github.io/post/databaseschema/" />
 
@@ -74,21 +74,21 @@
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name":  null ,
-        "logo": "https://porch-vault.github.io/images/logo.png"
+        "name": ,
+        "logo": https://porch-vault.github.io/images/logo.png
     },
     "author": {
         "@type": "Person",
-        "name":  null ,
+        "name": ,
         
         "image": {
             "@type": "ImageObject",
-            "url": "https://porch-vault.github.io/images/logo.png",
+            "url": https://porch-vault.github.io/images/logo.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url":  null ,
+        "url": ,
         "sameAs": [
             
             
@@ -100,23 +100,23 @@
             
         ]
     },
-    "headline": "Database Schema",
-    "name": "Database Schema",
-    "wordCount":  322 ,
+    "headline": Database Schema,
+    "name": Database Schema,
+    "wordCount": 334,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
-      "alternateName": "en"
+      "alternateName": en
     },
-    "url": "https://porch-vault.github.io/post/databaseschema/",
-    "datePublished": "2021-03-02T00:00Z",
-    "dateModified": "2021-03-02T00:00Z",
+    "url": https://porch-vault.github.io/post/databaseschema/,
+    "datePublished": 2021-03-02T00:00Z,
+    "dateModified": 2021-03-02T00:00Z,
     
     
-    "description": "",
+    "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://porch-vault.github.io/post/databaseschema/"
+        "@id": https://porch-vault.github.io/post/databaseschema/
     }
 }
     </script>
@@ -211,48 +211,60 @@
     </header>
 
     <section class="post-content">
-      <h2 id="database-technology">Database Technology</h2>
+      
+
+<h2 id="database-technology">Database Technology</h2>
+
 <p>The database is created using SQLite3. Given that the project is an MVP it seemed suitable to go with the ease of use and size of a SQLite database.</p>
+
 <h2 id="split">Split</h2>
+
 <p>Similar to the APIs two halves of the database are kept completely separate. The product and authorization. The authorization contains one table. With the product containing four tables.</p>
+
 <h2 id="authorization">Authorization</h2>
+
 <p>The authorization database is used specifically to hold the clients login information.</p>
-<p>It contains a single table called authClient the columns are:</p>
-<ul>
-<li>clientName</li>
-<li>password</li>
-</ul>
+
+<p>It contains a single table called authClient the columns are:
+* clientName
+* password</p>
+
 <p>The passwords are kept as hashed and salted encrypted versions.</p>
+
 <h2 id="product">Product</h2>
+
 <p>The product database holds all the information needed to complete the business logic of the entire application stack. It contains four tables.</p>
+
 <h3 id="user">User</h3>
-<p>The user table contains the user information. The columns are:</p>
-<ul>
-<li>userName(clientName)</li>
-<li>emailAddress</li>
-</ul>
+
+<p>The user table contains the user information. The columns are:
+* userName(clientName)
+* emailAddress</p>
+
 <p>Where the userName is a primary key and matches the clientName in the authClient table.</p>
+
 <h3 id="owns">Owns</h3>
-<p>The table contains the many to many relationship of users to devices. Since many users can own many devices and many devices can have many users this table is a necessary requirement to store that information. It contains two columns:</p>
-<ul>
-<li>userName</li>
-<li>deviceName</li>
-</ul>
+
+<p>The table contains the many to many relationship of users to devices. Since many users can own many devices and many devices can have many users this table is a necessary requirement to store that information. It contains two columns:
+* userName
+* deviceName</p>
+
 <h3 id="device">Device</h3>
-<p>This table contains the device information. It has the following columns:</p>
-<ul>
-<li>deviceName (clientName)</li>
-<li>devicePIN</li>
-<li>deviceCommonName</li>
-</ul>
+
+<p>This table contains the device information. It has the following columns:
+* deviceName (clientName)
+* devicePIN
+* deviceCommonName</p>
+
 <p>The deviceName is the primary key and matches the clientName in the authClients table to allow devices to be clients of the product api as well. The devicePIN is the master pin that can be used many times by the user to retrieve their packages. DeviceCommonName being the name that will be displayed to the user on the chrome extension.</p>
+
 <h3 id="delivery">Delivery</h3>
-<p>This table contains the information for an individual delivery PIN. It contains the following columns:</p>
-<ul>
-<li>deliveryID</li>
-<li>deviceID</li>
-<li>deliveryPIN</li>
-</ul>
+
+<p>This table contains the information for an individual delivery PIN. It contains the following columns:
+* deliveryID
+* deviceID
+* deliveryPIN</p>
+
 <p>The delivery must know what device it belongs to hence the foreign key to the deviceName. It also contains a unique ID for the individual delivery to specifically access and delete it. The pin attribute being self explanatory.</p>
 
     </section>
